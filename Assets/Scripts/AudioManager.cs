@@ -1,24 +1,20 @@
-using System.Data.Common;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
     [Header("Audio Sources")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource sfxSource;
-    [SerializeField] AudioSource decClipSource;
+    [SerializeField] AudioSource sfxSource; // reproductor efectos de sonido
+    [SerializeField] AudioSource musicSource; // reproductor efectos de musica
 
-    [Header("Audio Clips")]
-    public AudioClip musicClip;
-    public AudioClip jumpClip;
-    public AudioClip deciClip;
-    public AudioClip parcheClip;
-
-    public static AudioManager instance;
+    [Header("Audio Clips")] // Clips de audio
+    public AudioClip background; 
+    public AudioClip jumpClip; 
+   
+    public static AudioManager instance; // para acceder desde otros scrips
 
 
-  
+    #region noDestruir 
     private void Awake()
     {
         if (instance == null)
@@ -31,52 +27,28 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
 
-        void Start()
-        {
-           // PlayMusic(inGameMusic);
-        }
 
-public void PlayDecClip()
-    {
-        if (decClipSource != null && deciClip != null)
-        {
-            decClipSource.clip = deciClip;
-            decClipSource.loop = true; // Si quieres que el sonido se repita
-            decClipSource.Play();
-        }
-    }
-
-     public void StopDecClip()
-    {
-        if (decClipSource != null && decClipSource.isPlaying)
-        {
-            decClipSource.Stop();
-        }
-    }
-
-    public void PlayMusic(AudioClip musicClip)
-    {
-        if (musicSource != null && musicClip != null)
-        {
-            musicSource.clip = musicClip;
-            musicSource.loop = true;
-            musicSource.Play();
-        }
-    }
-    
-        public void PlaySFX(AudioClip sfxClip)
+    //Aca llegan las llamadas de audios a reproducirse
+    public void PlaySFX(AudioClip sfxClip)
     {
         if (sfxSource != null && sfxClip != null)
         {
             sfxSource.PlayOneShot(sfxClip);
         }
     }
-    public void StopMusic()
+
+    //este es para la musica constante y al inicio
+    public void Start()
     {
-        if (musicSource != null)
-        {
-            musicSource.Stop();
-        }
+        musicSource.clip = background;
+        musicSource.Play();
     }
+
+
+
+
 }
+
+

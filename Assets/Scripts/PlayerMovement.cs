@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
             Rb.linearVelocity = new Vector2(Rb.linearVelocity.x, salto);
+            ///   ACA ESTA EL LLAMADO PARA REPRODUCIR LA MUSICA    ///
             AudioManager.instance.PlaySFX(AudioManager.instance.jumpClip);
         
         }
@@ -70,9 +71,10 @@ public class PlayerMovement : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "triggerNaranja")
+        if (collision.gameObject.name == "triggerNaranja")
         {
             Debug.Log("OnTriggerEnter2D");
+            
         }        
     }
 
