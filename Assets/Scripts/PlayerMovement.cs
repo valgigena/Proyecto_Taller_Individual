@@ -36,9 +36,11 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position,0.1f,groundlayer);
         isWalled = Physics2D.OverlapCircle(wallCheck.position,0.1f,groundlayer);
 
-        if(Input.GetButtonDown("Jump") && isGrounded == true)
+        if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
             Rb.linearVelocity = new Vector2(Rb.linearVelocity.x, salto);
+            AudioManager.instance.PlaySFX(AudioManager.instance.jumpClip);
+        
         }
          if(isWalled == true)
         {
