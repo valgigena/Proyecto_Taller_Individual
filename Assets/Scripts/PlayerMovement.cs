@@ -43,9 +43,10 @@ public class PlayerMovement : MonoBehaviour
             AudioManager.instance.PlaySFX(AudioManager.instance.jumpClip);
         
         }
-         if(isWalled == true)
+
+         if (isWalled == true)
         {
-            Rb.linearVelocity = new Vector2(Rb.linearVelocity.x,deslizar * -1);
+            Rb.linearVelocity = new Vector2(Rb.linearVelocity.x, deslizar * -1);
         }
         
 

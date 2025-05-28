@@ -9,8 +9,9 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Clips")] // Clips de audio
     public AudioClip background; 
-    public AudioClip jumpClip; 
-   
+    public AudioClip jumpClip;
+    public AudioClip damageClip;
+    public AudioClip robotClip; 
     public static AudioManager instance; // para acceder desde otros scrips
 
 

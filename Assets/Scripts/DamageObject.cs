@@ -28,11 +28,11 @@ public class DamageObject : MonoBehaviour
     void ApplyDamage(GameObject target)
     {
         HealthSystem healthSystem = target.GetComponent<HealthSystem>();
-        
-        if(healthSystem != null)
+
+        if (healthSystem != null)
         {
             healthSystem.TakeDamage(damageAmount);
-            
+            AudioManager.instance.PlaySFX(AudioManager.instance.damageClip);
         }
     }
 }
