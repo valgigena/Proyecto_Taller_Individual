@@ -27,30 +27,55 @@ public class PlayerMovement : MonoBehaviour
     public Transform wallCheck;       //Detector de PARED
     #endregion
 
+////////// pasos
+
+    public float stepInterval = 0.4f;
+    private float stepTimer;
+
     void Update()
     {
         //MOVIMIENTO
         input = Input.GetAxisRaw("Horizontal");
         Rb.linearVelocity = new Vector2(velocidad * input, Rb.linearVelocity.y);
-       
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position,0.1f,groundlayer);
-        isWalled = Physics2D.OverlapCircle(wallCheck.position,0.1f,groundlayer);
+
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundlayer);
+        isWalled = Physics2D.OverlapCircle(wallCheck.position, 0.1f, groundlayer);
 
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
             Rb.linearVelocity = new Vector2(Rb.linearVelocity.x, salto);
             ///   ACA ESTA EL LLAMADO PARA REPRODUCIR LA MUSICA    ///
             AudioManager.instance.PlaySFX(AudioManager.instance.jumpClip);
-        
+
         }
 
-         if (isWalled == true)
+        if (isWalled == true)
         {
             Rb.linearVelocity = new Vector2(Rb.linearVelocity.x, deslizar * -1);
         }
-        
+
 
         flip();
+
+        /////////////////////////////////// pasos
+        
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        bool isMoving = (horizontal != 0 || vertical != 0);
+
+        if (isMoving && isGrounded)
+        {
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0)
+            {
+                AudioManager.instance.PlayFootstep();
+                stepTimer = stepInterval;
+            }
+        }
+        else
+        {
+            stepTimer = stepInterval;
+        }
         
     }
 

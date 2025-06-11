@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip jumpClip;
     public AudioClip damageClip;
     public AudioClip robotClip; 
+    public AudioClip paso1;
     public static AudioManager instance; // para acceder desde otros scrips
 
 
@@ -47,7 +48,13 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-
+    public void PlayFootstep()
+    {
+        if (paso1 != null && sfxSource != null)
+        {
+            sfxSource.PlayOneShot(paso1);
+        }
+    }
 
 
 }
