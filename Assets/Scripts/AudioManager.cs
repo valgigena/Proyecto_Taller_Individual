@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip damageClip;
     public AudioClip robotClip; 
     public AudioClip paso1;
+
+    
     public static AudioManager instance; // para acceder desde otros scrips
 
 

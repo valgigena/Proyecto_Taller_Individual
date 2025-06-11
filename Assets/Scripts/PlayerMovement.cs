@@ -7,12 +7,12 @@ using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
+
     public Rigidbody2D Rb; //esto puede ser distinto
 
     private float input; //entrada del teclado o joystick
     public float velocidad = 5f;
-    
+
     #region Salto
     [Header("Salto")]
     public LayerMask groundlayer;     // piso
@@ -20,17 +20,17 @@ public class PlayerMovement : MonoBehaviour
     public float salto = 10;          // potencia de salto
     [SerializeField] bool isGrounded; // true si esta tocando el piso
     public Transform groundCheck;     // Detector de PISO
-    
+
     [Space]
     public float deslizar;            // potencia de deslice
-   [SerializeField] bool isWalled;    // true si esta tocando la pared
+    [SerializeField] bool isWalled;    // true si esta tocando la pared
     public Transform wallCheck;       //Detector de PARED
     #endregion
 
-////////// pasos
+    ////////// pasos
 
-    public float stepInterval = 0.4f;
-    private float stepTimer;
+    public float stepInterval = 0.4f; ////////// pasos
+    private float stepTimer; ////////// pasos
 
     void Update()
     {
@@ -54,11 +54,58 @@ public class PlayerMovement : MonoBehaviour
             Rb.linearVelocity = new Vector2(Rb.linearVelocity.x, deslizar * -1);
         }
 
-
         flip();
+        pasos();
+    }
 
-        /////////////////////////////////// pasos
-        
+    ///////////////////////////////////////// Flip ///////////////////////////////////
+    private void flip()
+    {
+        if (input > 0)
+        {
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        if (input < 0)
+        {
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
+
+    }
+
+    ///////////////////////////////////////// OnT  ///////////////////////////////////
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "triggerNaranja")
+        {
+            Debug.Log("OnTriggerEnter2D");
+
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "triggerNaranja")
+        {
+            Debug.Log("OnTriggerExit2D");
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == ("collisionAmarillo"))
+        {
+            Debug.Log("OnCollisionEnter2D"); // Esto no funcionaba porque la geometria del collider estaba muy justa!!
+        }
+    }
+
+
+    /////////////////////////////////// pasos
+
+    private void pasos()
+    {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         bool isMoving = (horizontal != 0 || vertical != 0);
@@ -76,51 +123,6 @@ public class PlayerMovement : MonoBehaviour
         {
             stepTimer = stepInterval;
         }
+    }
         
-    }
-
-///////////////////////////////////////// Flip ///////////////////////////////////
-    private void flip()
-    {
-        if(input > 0)
-        {
-            gameObject.transform.localScale = new Vector3(-1,1,1);
-        }
-          if(input < 0)
-        {
-            gameObject.transform.localScale = new Vector3(1,1,1);
-        }
-        
-    }
-
-    ///////////////////////////////////////// OnT  ///////////////////////////////////
-   
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "triggerNaranja")
-        {
-            Debug.Log("OnTriggerEnter2D");
-            
-        }        
-    }
-
-
-  private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.name == "triggerNaranja")
-        {
-            Debug.Log("OnTriggerExit2D");
-        }        
-    }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.name == ("collisionAmarillo"))
-        {
-        Debug.Log("OnCollisionEnter2D"); // Esto no funcionaba porque la geometria del collider estaba muy justa!!
-        }
-    }
-
-
 }
