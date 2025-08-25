@@ -1,0 +1,46 @@
+[LOG] FMOD_System_Create                       : Header version = 2.03.09. Current version = 2.03.09.
+[LOG] system_create                            : Header version = 2.03.09. Current version = 2.03.09.
+[LOG] SystemI::setOutputInternal               : Setting output to 'FMOD PulseAudio Output'
+[LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata (nil).
+[LOG] SystemI::init                            : Initialize version=20309 (155273), maxchannels=256, flags=0x00020000
+[LOG] OutputPulseAudio::PulseAudio_RegisterLib : Loaded PulseAudio version 15.99.0.
+[LOG] PulseAudio_EnumOutputCallback            : Found output device NAME:alsa_output.pci-0000_00_14.2.iec958-stereo DESC:Audio Interno Estéreo digital (IEC958) CHANNELS:2 RATE:32000.
+[LOG] PulseAudio_EnumOutputCallback            : Found output device NAME:alsa_output.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-output DESC:PCM2902 Audio Codec Estéreo analógico CHANNELS:2 RATE:32000.
+[LOG] PulseAudio_EnumInputCallback             : Found input device NAME:alsa_input.usb-TORINSZ_CAMERA_-_UVC-02.mono-fallback DESC:CAMERA - UVC Mono CHANNELS:1 RATE:16000.
+[LOG] PulseAudio_EnumInputCallback             : Found input device NAME:alsa_output.pci-0000_00_14.2.iec958-stereo.monitor DESC:Monitor of Audio Interno Estéreo digital (IEC958) CHANNELS:2 RATE:32000.
+[LOG] PulseAudio_EnumInputCallback             : Found input device NAME:alsa_input.pci-0000_00_14.2.analog-stereo DESC:Audio Interno Estéreo analógico CHANNELS:2 RATE:44100.
+[LOG] PulseAudio_EnumInputCallback             : Found input device NAME:alsa_output.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-output.monitor DESC:Monitor of PCM2902 Audio Codec Estéreo analógico CHANNELS:2 RATE:32000.
+[LOG] PulseAudio_EnumInputCallback             : Found input device NAME:alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-input DESC:PCM2902 Audio Codec Estéreo analógico CHANNELS:2 RATE:16000.
+[LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] FMOD_OS_Thread_Callback                  : Cannot set real-time thread priorities due to insufficient privileges
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
+[LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
+[LOG] FMOD_OS_Thread_Callback                  : Cannot set real-time thread priorities due to insufficient privileges
+[LOG] AsyncManager::init                       : manager 0x5a136c138ac8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : done
+[LOG] PlaybackSystem::init                     : 
+[LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
+[LOG] FMOD_OS_Thread_Callback                  : Cannot set real-time thread priorities due to insufficient privileges
+[LOG] PlaybackSystem::init                     : done
+[LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
+[LOG] FMOD_OS_Thread_Callback                  : Cannot set real-time thread priorities due to insufficient privileges
+[LOG] Manager::init                            : done.
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::closeInternal                   : Closed.
+[WRN] PulseAudio_StreamUnderflowCallback       : Buffer underrun detected in PulseAudio. Current block Count = 4
+[LOG] PulseAudio_StreamUnderflowCallback       : Increasing buffer size - new block count = 5.
+[WRN] PulseAudio_StreamUnderflowCallback       : Buffer underrun detected in PulseAudio. Current block Count = 5
+[LOG] PulseAudio_StreamUnderflowCallback       : Increasing buffer size - new block count = 6.
