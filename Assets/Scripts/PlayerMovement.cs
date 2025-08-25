@@ -27,10 +27,6 @@ public class PlayerMovement : MonoBehaviour
     public Transform wallCheck;       //Detector de PARED
     #endregion
 
-    ////////// pasos
-
-    public float stepInterval = 0.4f; ////////// pasos
-    private float stepTimer; ////////// pasos
 
     void Update()
     {
@@ -45,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Rb.linearVelocity = new Vector2(Rb.linearVelocity.x, salto);
             ///   ACA ESTA EL LLAMADO PARA REPRODUCIR LA MUSICA    ///
-            AudioManager.instance.PlaySFX(AudioManager.instance.jumpClip);
+            // AudioManager.instance.PlaySFX(AudioManager.instance.jumpClip);
 
         }
 
@@ -55,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         flip();
-        pasos();
     }
 
     ///////////////////////////////////////// Flip ///////////////////////////////////
@@ -103,26 +98,5 @@ public class PlayerMovement : MonoBehaviour
 
 
     /////////////////////////////////// pasos
-
-    private void pasos()
-    {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        bool isMoving = (horizontal != 0 || vertical != 0);
-
-        if (isMoving && isGrounded)
-        {
-            stepTimer -= Time.deltaTime;
-            if (stepTimer <= 0)
-            {
-                AudioManager.instance.PlayFootstep();
-                stepTimer = stepInterval;
-            }
-        }
-        else
-        {
-            stepTimer = stepInterval;
-        }
-    }
         
 }

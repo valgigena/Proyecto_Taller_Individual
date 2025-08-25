@@ -1113,7 +1113,6 @@ MonoBehaviour:
   deslizar: 3
   isWalled: 0
   wallCheck: {fileID: 1995005339}
-  stepInterval: 0.4
 --- !u!114 &925657305
 MonoBehaviour:
   m_ObjectHideFlags: 0
