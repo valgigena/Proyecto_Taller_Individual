@@ -1,7 +1,7 @@
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -9,13 +9,15 @@ public class HealthSystem : MonoBehaviour
     public TMP_Text healthText;    // Referencia al texto
     public int maxHealth = 100;
     public Transform respawnPoint;
+    public Slider barraVida; 
 
 
 
     void Update()
     {
-        // Actualiza el texto cada frame
-        healthText.text = "Vida: " + health.ToString();
+        
+        barraVida.value = health;
+        
         if (health == 0)
         {
             Respawn();
