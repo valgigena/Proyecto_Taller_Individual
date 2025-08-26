@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DeathCounter
   m_EditorClassIdentifier: 
   deathCount: 0
+  resetOnGameStart: 1
