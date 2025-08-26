@@ -6,15 +6,6 @@ public class DamageObject : MonoBehaviour
     [SerializeField] private int damageAmount = 10;   // Cantidad de daño
     [SerializeField] private LayerMask targetLayer;   // Capa de objetos afectados
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Verifica si el objeto colisionado está en la capa objetivo
-        if (((1 << collision.gameObject.layer) & targetLayer) != 0)
-        {
-            ApplyDamage(collision.gameObject);
-        }
-    }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -32,7 +23,7 @@ public class DamageObject : MonoBehaviour
         if (healthSystem != null)
         {
             healthSystem.TakeDamage(damageAmount);
-            AudioManager.instance.PlaySFX(AudioManager.instance.damageClip);
+            //AudioManager.instance.PlaySFX(AudioManager.instance.damageClip);
         }
     }
 }
