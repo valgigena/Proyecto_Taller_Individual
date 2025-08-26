@@ -6,38 +6,28 @@ public class DeathCounterUI : MonoBehaviour
     [SerializeField] private DeathCounter deathCounter;
     [SerializeField] private TMP_Text deathCountText;
 
-    private void OnEnable()
-    {
-        // Suscribirse al evento cuando el objeto se habilita
-        if (deathCounter != null)
-        {
-            deathCounter.OnDeathCountChanged += UpdateDeathCountText;
-        }
-    }
+    private int lastKnownCount = -1;
 
-    private void OnDisable()
+    private void Update()
     {
-        // Desuscribirse cuando el objeto se deshabilita
-        if (deathCounter != null)
+        if (deathCounter != null && deathCountText != null)
         {
-            deathCounter.OnDeathCountChanged -= UpdateDeathCountText;
+            // Solo actualizar si el valor ha cambiado
+            if (deathCounter.DeathCount != lastKnownCount)
+            {
+                deathCountText.text = deathCounter.DeathCount.ToString();
+                lastKnownCount = deathCounter.DeathCount;
+            }
         }
     }
 
     private void Start()
     {
-        // Actualizar el texto con el valor inicial
+        // Inicializar el texto
         if (deathCounter != null && deathCountText != null)
         {
             deathCountText.text = deathCounter.DeathCount.ToString();
-        }
-    }
-
-    private void UpdateDeathCountText(int newCount)
-    {
-        if (deathCountText != null)
-        {
-            deathCountText.text = newCount.ToString();
+            lastKnownCount = deathCounter.DeathCount;
         }
     }
 }
