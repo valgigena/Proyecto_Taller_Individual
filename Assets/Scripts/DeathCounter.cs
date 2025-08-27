@@ -4,22 +4,19 @@ using UnityEngine;
 public class DeathCounter : ScriptableObject
 {
     [SerializeField] private int deathCount = 0;
-    
-    public int DeathCount => deathCount;
 
-    private void OnEnable()
-    {
-        // Siempre reinicia al cargarse
-        ResetDeathCount();
-    }
+    public int DeathCount => deathCount;
 
     public void IncrementDeathCount()
     {
         deathCount++;
     }
     
-    public void ResetDeathCount()
+        private void OnEnable()
     {
+        //Siempre reinicia al cargarse
         deathCount = 0;
     }
+    
+
 }
